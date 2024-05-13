@@ -1,0 +1,31 @@
+server:
+  port: 8081
+integration:
+  eventlog:
+    logKeyUuid: 9043c3d3-14ff-4d44-a2a8-ffb45122f2c6
+    url: http://localhost:8080
+spring:
+  datasource:
+    username: docu
+    password: docu
+    url: jdbc:mariadb://localhost:3307/document
+
+  flyway:
+    enabled: true
+  jpa:
+    properties:
+      jakarta:
+        persistence:
+          schema-generation:
+            database:
+              action: validate
+  security:
+    oauth2:
+      client:
+        provider:
+          eventlog:
+            token-uri: http://localhost:9090/token
+        registration:
+          eventlog:
+            client-id: the-client-id
+            client-secret: the-client-secret
